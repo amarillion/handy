@@ -2,18 +2,19 @@
 
 import { ref, computed } from 'vue';
 
-const encoding = ref<string>();
-const inputString = ref<string>()
+const encoding = ref<string>("UTF-8");
+const inputString = ref<string>("💩")
 
-function toBytes(inputValue: string, encoding: string) {
-	if (encoding.toUpperCase() === "UTF-8") {
+function toBytes(inputValue: string, _encoding: string) {
+	const encoding = _encoding.toUpperCase();
+	if (encoding === "UTF-8") {
 		const encoder = new TextEncoder()
 		const byteArray = encoder.encode(inputValue);
 
 		const result: number[] = [ ...byteArray ];
 		return result;
 	}
-	else if (encoding.toUpperCase().startsWith("UTF-16")) {
+	else if (encoding.startsWith("UTF-16")) {
 		const result: number[] = [];
 		const str = inputValue;
 		if (str) {
@@ -22,8 +23,7 @@ function toBytes(inputValue: string, encoding: string) {
 				let low = codePoint & 0xFF;
 				let high = (codePoint & 0xFF00) >> 8;
 
-				// TODO: double-check that I didn't accidentally swal le/be
-				if (encoding.toLowerCase().endsWith("be")) {
+				if (encoding.endsWith("LE")) {
 					result.push(low, high);
 				}
 				else {
@@ -61,9 +61,9 @@ function codePoint(input: string) {
 
 </script>
 <template>
-	<h1>Explain encodings</h1>
+	<h1>Encoding Explainer</h1>
 	<div>
-		<label for="select-encoding">Select encoding</label>
+		<label for="select-encoding">Select encoding: </label>
 		<select id="select-encoding" v-model="encoding">
 			<option>UTF-8</option>
 			<option>UTF-16le</option>
@@ -91,6 +91,7 @@ function codePoint(input: string) {
 <style lang="css">
 td {
 	border: 1px solid darkgray;
+	padding: 0.3rem;
 }
 table {
 	border-spacing: 0;
