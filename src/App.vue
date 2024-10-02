@@ -2,11 +2,23 @@
 </script>
 
 <template>
-	 <nav>
+	<nav>
 		<ul>
-			<li><RouterLink to="/">Home</RouterLink></li>
-			<li><RouterLink to="/qr">Go to QR Code generator</RouterLink></li>
-			<li><RouterLink to="/encoding-explainer">Encoding Explainer</RouterLink></li>
+			<li>
+				<RouterLink to="/">
+					Home
+				</RouterLink>
+			</li>
+			<li>
+				<RouterLink to="/qr">
+					Go to QR Code generator
+				</RouterLink>
+			</li>
+			<li>
+				<RouterLink to="/encoding-explainer">
+					Encoding Explainer
+				</RouterLink>
+			</li>
 		</ul>
 	</nav>
 	<main>

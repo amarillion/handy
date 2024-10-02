@@ -7,7 +7,7 @@ import QRCode from 'qrcode';
 const inputString = ref();
 const qrdata = ref();
 
-watch(inputString, (newValue) => {
+watch(inputString, newValue => {
 	QRCode.toDataURL(newValue, function (err, url) {
 		qrdata.value = url;
 		if (err) {
@@ -17,15 +17,18 @@ watch(inputString, (newValue) => {
 	});
 });
 
-//TODO: export as PNG
-//TODO: export as SVG
+// TODO: export as PNG
+// TODO: export as SVG
 </script>
 
 <template>
 	<h1>Create a QR Code</h1>
-	<input id="inputString" v-model="inputString">
+	<input
+		id="inputString"
+		v-model="inputString"
+	>
 	<div>
-		<img :src="qrdata"/>
+		<img :src="qrdata" />
 	</div>
 </template>
 
