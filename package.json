@@ -1,0 +1,29 @@
+{
+  "name": "my-handy-apps",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4",
+    "vue": "3.4.37",
+    "vue-router": "4.4.5"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "2.8.0",
+    "@types/qrcode": "1.5.5",
+    "@typescript-eslint/eslint-plugin": "8.8.0",
+    "@vitejs/plugin-vue": "5.1.2",
+    "eslint": "8.57.1",
+    "eslint-plugin-vue": "9.28.0",
+    "typescript": "5.5.3",
+    "vite": "5.4.1",
+    "vue-tsc": "2.0.29"
+  }
+}
